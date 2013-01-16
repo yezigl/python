@@ -1,0 +1,13 @@
+
+._popup_ {
+	position: fixed;
+	background-color: transparent;
+	font: 9px "微软雅黑";
+	right: 10px;
+	bottom: 5px;
+	width: 100px;
+	text-align: right;
+	overflow: hidden;
+	color: #000;
+	z-index: 999999999999999;
+}

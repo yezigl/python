@@ -1,0 +1,46 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: helvetica, arial, sans-serif;
+	font-size: 12px;
+	border: 1px solid silver;
+	border-radius: 3px;
+}
+
+td {
+	height: 20px;
+	line-height: 20px;
+	padding: 3px;
+	white-space: nowrap;
+}
+
+input, label {
+	vertical-align: middle;
+}
+
+input[type="radio"] {
+	margin: 1px;
+}
+
+#al {
+
+}
+
+#al table {
+	margin: 3px auto 0;
+}
+
+tr {
+	border: 1px dashed silver;
+}
+
+.ok {
+	padding: 0 6px;
+	border: 1px double silver;
+	text-align: left;
+	cursor: pointer;
+}
+
+/* .sel {
+	border: 1px solid silver;
+} */

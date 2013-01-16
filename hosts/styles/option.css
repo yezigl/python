@@ -1,0 +1,245 @@
+@CHARSET "UTF-8";
+
+body {
+	padding: 0 18%;
+	cursor: default;
+	background-color: #FAFBFF;
+	font-size: 9pt;
+	font-family: arial, helvetica, sans-serif;
+	color: #4E607D;
+	min-width: 760px;
+}
+
+input,select,textarea,button,label {
+	font: menu;
+	vertical-align: middle;
+}
+
+ul {
+	list-style: none;
+	padding: 1px 3px;
+	margin: 0px;
+}
+
+input[type="radio"] {
+	margin: 3px;
+}
+
+#tabs {
+	border-bottom: solid 1px #D1DBDF;
+	background-color: #FAFBFF;
+	margin-bottom: -1px;
+}
+
+.tab {
+	vertical-align: bottom;
+	font-weight: bold;
+	border-top: solid 1px #ABC;
+	border-left: solid 1px #ABC;
+	border-right: solid 1px #ABC;
+	border-radius: 3px 3px 0px 0px;
+	display: inline-block;
+	text-align: center;
+	padding: 6px 8px 7px 8px;
+	color: #7E90AD;
+	cursor: pointer;
+	font: menu;
+}
+
+.selected {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.4, #FAFCFD),
+		color-stop(0.41, #F0F5F9), color-stop(0.8, #F7F9FD) );
+	border-bottom: solid 1px #EAEFF3;
+	-webkit-box-shadow: 0px 0px 1px #ddd;
+	-webkit-transition: opacity 0.5s, -webkit-box-shadow 0.3s;
+	opacity: 1;
+	margin-bottom: -1px;
+}
+
+#content {
+	height: 100%;
+	min-width: 764px;
+	padding: 13px;
+	border: solid 1px #ABC;
+	border-radius: 0px 0px 6px 6px;
+	background-color: #F7F9FD;
+	margin-bottom: 30px;
+}
+
+#header {
+	font-size: 18pt;
+	text-shadow: #ABC 1px 1px 3px;
+	border: solid 1px #ABC;
+	border-radius: 6px;
+	padding: 6px;
+	margin: 20px auto 10px;
+}
+
+.control {
+	text-align: right;
+	border-top: solid 1px #ABC;
+	padding: 6px;
+	margin-top: 30px;
+}
+
+.button {
+	min-width: 100px;
+	color: #567;
+	display: inline-block;
+	cursor: pointer;
+	text-align: center;
+	padding: 6px;
+	border: solid 1px #ABC;
+	border-radius: 2px;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, white),
+		color-stop(0.4, whiteSmoke), color-stop(0.41, #EBEBEB) );
+	-webkit-box-shadow: 0px 1px 2px #ddd;
+	margin: 6px 0;
+}
+
+.rcontent {
+	display: inline-block;
+	margin-left: 13px;
+	width: 60%;
+}
+
+.desc {
+	text-align: start;
+	font-weight: bold;
+	color: #4E607D;
+}
+
+.desc {
+	padding: 5px 0px 5px 4px;
+}
+
+.desc .l1, .llist  {
+	display: inline-block;
+	width: 180px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.desc .l2 {
+	display: inline-block;
+	text-align: left;
+	margin-left: 13px;
+}
+
+.wrap {
+	border: solid 1px #D1DADD;
+	border-spacing: 8px;
+	empty-cells: show;
+	padding: 10px;
+	background-color: #F4F8FA;
+}
+
+.tag {
+	min-width: 50px;
+	display: inline-block;
+	padding-left: 10px;
+}
+
+.vat {
+	vertical-align: top;
+	padding-top: 5px;
+}
+
+.cell {
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	padding: 0 8px;
+	margin: 1px 12px 1px 0;
+	cursor: pointer;
+	border: solid 1px #CDE;
+	border-spacing: 1px;
+}
+
+.cell span:nth-child(1) {
+	width: 75%;
+	height: auto;
+	display: inline-block;
+	margin: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.cell span:nth-child(2) {
+	width: 18%;
+	height: auto;
+	display: inline-block;
+	margin: 1px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.listed {
+	border: solid 1px #CDE;
+	font-weight: bold;
+	background-color: #DAE4FF !important;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #EAF0FA),
+		color-stop(1, #DAE5F6) );
+}
+
+#profile_rule_list {
+	border-top: solid 1px #D1DADD;
+	padding-left: 60px;
+}
+
+#profile_rule_list li {
+	margin: 6px 0;
+	border: solid 1px #CDE;
+	width: 230px;
+	height: 24px;
+	line-height: 24px;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+.sep {
+	margin-top: 3px;
+}
+
+/*
+ * info tip
+ */
+#infoTip {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 60px;
+	line-height: 21px;
+	text-align: center;
+	z-index: 100;
+	width: 200px;
+	margin: 0 auto;
+	-webkit-box-shadow: 0px 1px 4px #ddd;
+	padding: 8px 23px 8px 23px;
+	border-radius: 0px 0px 5px 5px;
+}
+
+/* #infoTip > div {
+	display: inline-block;
+	-webkit-box-shadow: 0px 1px 4px #ddd;
+	padding: 8px 23px 8px 23px;
+	border-radius: 0px 0px 5px 5px;
+	color: #458;
+	border: solid 1px #cde;
+} */
+
+#infoTip.success {
+	color: #274;
+	border: solid 1px #caefc5;
+	background-color: #e4ffcd;
+}
+
+.title {
+	font: menu;
+	font-weight: bold;
+	margin-bottom: 2px;
+}
+
+.group {
+	line-height: 30px;
+}

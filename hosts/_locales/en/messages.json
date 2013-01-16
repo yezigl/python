@@ -1,0 +1,114 @@
+{
+	"name" : {
+		"message" : "Hosts Proxy"
+	},
+	"desc" : {
+		"message" : "switch hosts by proxy"
+	},
+	"title" : {
+		"message" : "Hosts Proxy"
+	},
+	"proxy_system" : {
+		"message" : "Use System Hosts"
+	},
+	"popup_options" : {
+		"message" : "Options"
+	},
+	"popup_about" : {
+		"message" : "About"
+	},
+	"delete" : {
+		"message" : "Delete"
+	},
+	"tab_profile" : {
+		"message" : "Profile"
+	},
+	"tab_rule" : {
+		"message" : "Hosts Rule"
+	},
+    "tab_config" : {
+        "message" : "Config"
+    },
+    "tab_imexport" : {
+        "message" : "Import&Export"
+    },
+	"profile_all" : {
+		"message" : "All Profiles"
+	},
+	"profile_detail" : {
+		"message" : "Detail"
+	},
+	"profile_new" : {
+		"message" : "New Profile"
+	},
+	"profile_title" : {
+		"message" : "Name"
+	},
+	"profile_desc" : {
+	    "message" : "Desc"
+	},
+	"rule_all" : {
+		"message" : "All Rules"
+	},
+	"rule_detail" : {
+		"message" : "Detail"
+	},
+	"rule_new" : {
+		"message" : "New rule"
+	},
+	"rule_domain" : {
+		"message" : "Domain"
+	},
+	"rule_ip" : {
+		"message" : "IP"
+	},
+	"rule_desc" : {
+	    "message" : "Desc"
+	},
+	"rule_domain_title" :{
+		"message" : "one ip per line, support wildcard"
+	},
+	"save" : {
+		"message" : "Save"
+	},
+	"close" : {
+		"message" : "Close"
+	},
+	"untitled" : {
+		"message" : "[Untitled]"
+	},
+	"option_saved" : {
+		"message" : "Option Saved."
+	},
+    "options_backup" : {
+        "message" : "Backup"
+    },
+    "options_restore" : {
+        "message" : "Restore"
+    },
+    "options_import_export" : {
+        "message" : "Import & Export"
+    },
+    "options_backup_label" : {
+        "message" : "Backup config to local file."
+    },
+    "options_restore_label" : {
+        "message" : "Restore from local file."
+    },
+    "options_imexport_success" : {
+        "message" : "Options restore."
+    },
+    "config_display" : {
+        "message" : "Hosts Mode"
+    },
+    "profile_hosts" : {
+        "message" : "Hosts"
+    },
+    "config_display_hosts" : {
+        "message" : "Use system hosts(need administrator)."
+    },
+    "config_display_list" : {
+        "message" : "Use Chrome proxy."
+    }
+	
+}

@@ -1,0 +1,179 @@
+@CHARSET "UTF-8";
+
+body {
+	font: 12px/1.6 arial, helvetica, sans-serif;
+	color: #666;
+	padding: 0;
+	margin: 0;
+}
+
+canvas {
+	vertical-align: middle;
+}
+
+a {
+	text-decoration: none;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+#fm-section {
+	width: 600px;
+	height: 371px;
+	margin: 10px;
+}
+
+/* fm-header */
+#fm-header {
+	clear: both;
+	height: 70px;
+}
+
+#logo {
+	padding-left: 6px;
+	padding-top: 6px;
+}
+
+.login {
+	float: right;
+}
+/* end */
+
+/* fm-channel */
+#fm-channel {
+	float: left;
+}
+
+#fm-channel li a {
+	width: 136px;
+	height: 40px;
+	display: inline-block;
+	zoom: 1;
+}
+
+#fm-channel .x1 {
+	background-image: url("../img/ch_titles2.png");
+	background-color: transparent;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	margin-top: 10px;
+	display: block;
+	width: 70px;
+	height: 13px;
+}
+
+#fm-personal-label .x1 {
+	background-position: 16px 0px;
+}
+
+#fm-public-label .x1 {
+	background-position: 16px -15px;
+}
+
+#fm-dj-label .x1 {
+	background-position: 16px -28px;
+}
+/* end */
+
+#fm-playlist {
+	float: left;
+}
+
+#fm-player {
+	float: right;
+	margin-top: 10px;
+	margin-right: 13px;
+}
+
+/* song-cover */
+.c {
+	float: left;
+	margin: 6px;
+}
+
+.c img {
+	width: 160px;
+	height: 160px;
+	overflow: hidden;
+}
+/* end */
+
+.player-wrap {
+	float: right;
+}
+
+.s {
+	padding: 5px 3px 5px 10px;	
+}
+
+/* song-control */
+.sc {
+	cursor: pointer;
+	float: left;
+	margin: 6px 13px 6px 3px;
+	line-height: 20px;
+}
+/* end */
+
+/* song-info */
+.si {
+	display: block;
+	clear: both;
+	font-style: normal;
+	width: 160px;
+	overflow: hidden;
+}
+/* end */
+
+/* song-progress */
+.bp {
+	position: absolute;
+	display: block;
+	width: 150px;
+	height: 2px;
+	background-color: #e2e7e4;
+	z-index: 1;
+}
+
+.fp {
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 2px;
+	background-color: #9dd6c5;
+	z-index: 2;
+}
+
+.ti {
+	position: relative;
+	font-style: normal;
+	text-align: right;
+	top: 4px;
+	left: 103px;
+	padding: 3px 0px;
+}
+
+.vo {
+	position: relative;
+	top: 4px;
+	left: 110px;
+	padding: 3px 8px;
+	background-image: url("../img/pixnew.png");
+	background-color: transparent;
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position: 0px -210px;
+	cursor: pointer;
+}
+
+.vv {
+	position: absolute;
+	display: block;
+	width: 2px;
+	height: 50px;
+	background-color: #999;
+	cursor: pointer;
+}
+/* end */

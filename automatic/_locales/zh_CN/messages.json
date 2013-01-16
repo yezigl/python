@@ -1,0 +1,11 @@
+{
+	"name" : {
+		"message" : "Automatic"
+	},
+	"desc" : {
+		"message" : "Automatic"
+	},
+	"pagetitle" : {
+	    "message" : "Scan"
+	}
+}

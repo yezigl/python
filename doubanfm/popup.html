@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FM</title>
+<link href="css/doubanfm.css" type="text/css" rel="stylesheet"/>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="js/popup.js"></script>
+<script type="text/javascript">
+chrome.extension.onRequest.addListener(onRequest);
+
+function onRequest(request, sender, callback) {
+    console.log("receive request.action:" + request.action);
+    switch (request.action) {
+    	case 'play':
+    	    SongInfo.init();
+    	    break;
+    	case 'playing':
+    		Progress.init();
+    		Controller.countdown();
+    		break;
+    	case 'pause':
+    	    Progress.stop();
+    	    break;
+    	case 'end':
+    	    Progress.reset();
+    		break;
+    	default:
+    	    trace("unkown action: " + request.action);
+    }
+};
+
+$(function() {
+    SongInfo.init();
+	Progress.init();
+	//#9dd6c5
+	Controller.init();
+	Controller.draw(Player.isPlay());
+});
+</script>
+</head>
+<body>
+<div id="fm-section">
+	<div id="fm-header">
+		<div id="logo">
+			<a href="http://douban.fm"><img width="117" height="46" src="http://img3.douban.com/pics/radio/home/fm_logo.png">
+			</a>
+		</div>
+		<div class="login"></div>
+	</div>
+	
+	<div class="f">
+		<div id="fm-channel">
+			<ul>
+				<li id="fm-personal-label"><a href="#cate=personal"><i class="x1"></i></a></li>
+				<li id="fm-public-label"><a href="#cate=public"><i class="x1"></i></a></li>
+				<li id="fm-dj-label"><a href="#cate=dj"><i class="x1"></i></a></li>
+			</ul>
+		</div>
+		
+		<div id="fm-playlist"></div>
+		
+		<div id="fm-player">
+			<div class="c">
+				<img id="cover" />
+			</div>
+			<div class="player-wrap">
+				<div class="s" id="song-info">
+					<i class="si" id="artist">artist</i>
+					<i class="si" id="album">album - year</i>
+					<i class="si" id="title">title</i>
+				</div>
+				<div class="s" id="song-progress">
+					<i class="bp" id="progress1"></i>
+					<i class="fp" id="progress2"></i>
+					<i class="ti" id="time">0:00</i>
+					<i class="vo" id="volume"></i>
+				</div>
+				<div class="s" id="song-control">
+					<div class="sc" id="playsong"></div>
+					<div class="sc" id="nextsong"></div>
+					<div class="sc" id="nextlist"></div>
+				</div>
+			</div>		
+		</div>
+	</div>
+</div>
+</body>
+</html>

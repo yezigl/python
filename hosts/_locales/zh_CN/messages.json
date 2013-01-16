@@ -1,0 +1,113 @@
+{
+	"name" : {
+		"message" : "Hosts Proxy"
+	},
+	"desc" : {
+		"message" : "\u901a\u8fc7\u4ee3\u7406\u5b9e\u73b0\u5207\u6362hosts\u7684\u6548\u679c"
+	},
+	"title" : {
+		"message" : "Hosts Proxy"
+	},
+	"proxy_system" : {
+		"message" : "\u4f7f\u7528\u7cfb\u7edfHosts"
+	},
+	"popup_options" : {
+		"message" : "\u9009\u9879"
+	},
+	"popup_about" : {
+		"message" : "\u5173\u4e8e"
+	},
+	"delete" : {
+		"message" : "\u5220\u9664"
+	},
+	"tab_profile" : {
+		"message" : "\u60c5\u666f\u6a21\u5f0f"
+	},
+	"tab_rule" : {
+		"message" : "Hosts\u89c4\u5219"
+	},
+	"tab_config" : {
+	    "message" : "\u8bbe\u7f6e"
+	},
+	"tab_imexport" : {
+	    "message" : "\u5bfc\u5165/\u5bfc\u51fa"
+	},
+	"profile_all" : {
+		"message" : "\u6240\u6709\u6a21\u5f0f"
+	},
+	"profile_detail" : {
+		"message" : "\u8be6\u7ec6"
+	},
+	"profile_new" : {
+		"message" : "\u65b0 \u5efa"
+	},
+	"profile_title" : {
+		"message" : "\u540d\u79f0"
+	},
+	"profile_desc" : {
+	    "message" : "\u63cf\u8ff0"
+	},
+	"rule_all" : {
+		"message" : "\u6240\u6709\u89c4\u5219"
+	},
+	"rule_detail" : {
+		"message" : "\u8be6\u7ec6"
+	},
+	"rule_new" : {
+		"message" : "\u65b0 \u5efa"
+	},
+	"rule_domain" : {
+		"message" : "\u57df\u540d"
+	},
+	"rule_ip" : {
+		"message" : "IP"
+	},
+	"rule_desc" : {
+	    "message" : "\u63cf\u8ff0"
+	},
+	"rule_domain_title" :{
+		"message" : "\u6bcf\u884c\u4e00\u4e2aIP\uff0c\u652f\u6301\u901a\u914d\u7b26"
+	},
+	"save" : {
+		"message" : "\u4fdd \u5b58"
+	},
+	"close" : {
+		"message" : "\u5173 \u95ed"
+	},
+	"untitled" : {
+		"message" : "[\u672a\u547d\u540d]"
+	},
+	"option_saved" : {
+		"message" : "\u8bbe\u7f6e\u5df2\u4fdd\u5b58."
+	},
+	"options_backup" : {
+	    "message" : "\u5907\u4efd\u8bbe\u7f6e"
+	},
+	"options_restore" : {
+        "message" : "\u4ece\u6587\u4ef6\u6062\u590d"
+    },
+    "options_import_export" : {
+        "message" : "\u5bfc\u5165&\u5bfc\u51fa"
+    },
+    "options_backup_label" : {
+        "message" : "\u5907\u4efd\u8bbe\u7f6e\u5230\u672c\u5730\u3002"
+    },
+    "options_restore_label" : {
+        "message" : "\u4ece\u672c\u5730\u6587\u4ef6\u6062\u590d\u8bbe\u7f6e\u3002"
+    },
+    "options_imexport_success" : {
+        "message" : "\u8bbe\u7f6e\u5df2\u5bfc\u5165"
+    },
+    "config_display" : {
+        "message" : "Hosts\u65b9\u5f0f"
+    },
+    "profile_hosts" : {
+        "message" : "Hosts"
+    },
+    "config_display_hosts" : {
+        "message" : "\u4f7f\u7528\u7cfb\u7edfHosts(\u9700\u7ba1\u7406\u5458\u6743\u9650)"
+    },
+    "config_display_proxy" : {
+        "message" : "\u4f7f\u7528Chrome\u4ee3\u7406"
+    }
+}

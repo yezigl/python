@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hosts Options</title>
+<link type="text/css" href="styles/option.css" rel="stylesheet">
+<script type="text/javascript" src="libs/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="scripts/options.js"></script>
+<script type="text/javascript" src="scripts/common.js"></script>
+<script type="text/javascript" src="libs/FileSaver.js"></script>
+<script type="text/javascript" src="scripts/i18n.js"></script>
+</head>
+<body>
+<div id="header">Hosts Proxy</div>
+<div id="tabs">
+    <div id="tab_profile" data-tab="profile" class="tab selected">
+        <span data-i18n-text="tab_profile">情景模式</span>
+    </div>
+    <div id="tab_config" data-tab="config" class="tab normal">
+        <span data-i18n-text="tab_config">配置</span>
+    </div>
+    <div id="tab_imexport" data-tab="imexport" class="tab normal">
+        <span data-i18n-text="tab_imexport">导入/导出</span>
+    </div>
+</div>
+<div id="content">
+    <div id="profile" style="display: none;" type="tab">
+        <div class="desc">
+            <label class="l1" data-i18n-text="profile_all">所有模式</label>
+            <label class="l2" data-i18n-text="profile_detail">详细</label>
+        </div>
+        <div class="llist">
+            <ul id="profile_list"></ul>
+            <input type="hidden" id="selectProfile" value="">
+            <button class="button" id="profile_new" data-i18n-text="profile_new">新&nbsp;建</button>
+        </div>
+        <div id="profile_detail" class="rcontent wrap">
+            <div>
+            	<label id="profile_title_label" for="profile_title" class="tag" data-i18n-text="profile_title">名称</label>
+                <input type="text" id="profile_title" name="profile_title" size="30">
+            </div>
+            <div class="sep">
+                <label id="profile_desc_label" for="profile_desc" class="tag" data-i18n-text="profile_desc">描述</label>
+                <input type="text" id="profile_desc" name="profile_desc" size="30">
+            </div>
+            <div id="profile_display_list" style="display: none;">
+            	<ul id="profile_rule_list"></ul>
+            </div>
+            <div id="profile_display_hosts">
+            	<label id="profile_hosts_label" for="profile_hosts" class="tag vat" data-i18n-text="profile_hosts">Hosts</label>
+            	<textarea rows="13" cols="53" id="profile_hosts"></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="config" style="display: none;" type="tab">
+    	<div class="title">
+    		<span data-i18n-text="config_display">Hosts方式</span>
+    	</div>
+    	<div class="group wrap">
+    		<ul>
+    			<li><input type="radio" name="pdisplay" value="hosts" id="pdisplay_hosts"><label for="pdisplay_hosts" data-i18n-text="config_display_hosts">使用系统Hosts(需管理员权限)</label></li>
+    			<li><input type="radio" name="pdisplay" value="proxy" id="pdisplay_proxy"><label for="pdisplay_proxy" data-i18n-text="config_display_proxy">使用Chrome代理</label></li>
+    		</ul>
+    	</div>
+    </div>
+    <div id="imexport" style="display: none;" type="tab">
+    	<div class="title">
+    		<span data-i18n-text="options_import_export">导入&导出</span>
+    	</div>
+    	<div class="group wrap">
+    		<ul>
+    			<li><button class="button" id="options_backup" data-i18n-text="options_backup">备份设置</button>&nbsp;&nbsp;<label data-i18n-text="options_backup_label"></label></li>
+    			<li><button class="button" id="options_restore" data-i18n-text="options_restore">从文件恢复</button>&nbsp;&nbsp;<label data-i18n-text="options_restore_label"></label></li>
+    		</ul>    		
+    		<input type="file" id="rfile" name="rfile" style="visibility:hidden;position:absolute;"/>
+    	</div>
+    </div>
+    <div id="control" class="control" data-tab="profile">
+        <button class="button" id="button_save" data-i18n-text="save">保&nbsp;存</button>
+        <button class="button" id="button_close" data-i18n-text="close">关&nbsp;闭</button>
+    </div>
+</div>
+<div id="infoTip" class="success" style="display: none; ">
+	<div>
+		<span class="text" data-i18n-text="option_saved">设置已保存。</span>
+	</div>
+</div>
+</body>
+</html>

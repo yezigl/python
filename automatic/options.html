@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AutoLogin</title>
+<link type="text/css" href="css/option.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/option.js"></script>
+<script type="text/javascript" src="js/settings.js"></script>
+</head>
+<body>
+	<div id="navi">
+		<h1 i18n-text="title">AutoLogin</h1>
+		<ul>
+			<li i18n-text="settings" controls="settings">设置</li>
+		</ul>
+	</div>
+	<div id="settings">
+		<h2 i18n-text="settings_account">账号</h2>
+		<div id="account_list">
+			<input type="hidden" name="selectAct" id="selectAct">
+		</div>
+		<div id="add_newaccount">
+			<label for="accounttitle" i18n-text="account_title">账 户</label> <input type="text" name="accounttitle" id="accounttitle" autocomplete="off"><br> 
+			<label for="username" i18n-text="account_username">用户名</label> <input type="text" name="username" id="username" autocomplete="off"><br> 
+			<label for="password" i18n-text="account_password">密 码</label> <input type="text" name="password" id="password" autocomplete="off"><br> 
+			<input type="button" id="addAccount" value="添加" i18n-value="account_add">
+		</div>
+	</div>
+	<div id="detail">
+		<h2 i18n-text="settings_site">网站</h2>
+		<div id="site_list"></div>
+		<div id="add_newsite">
+			<label for="sitename" i18n-text="site_name">名字&nbsp;</label> <input type="text" name="sitename" id="sitename" autocomplete="off"><br> 
+			<label for="url" i18n-text="login_url">网址&nbsp;</label> <input type="text" name="url" id="url" size="50" autocomplete="off"><br> 
+			<label for="unsel" i18n-text="login_unsel" title="Seclector">登录名</label> <input type="text" name="unsel" id="unsel" autocomplete="off"><br> 
+			<label for="pwsel" i18n-text="login_pwsel" title="Seclector">密码&nbsp;</label> <input type="text" name="pwsel" id="pwsel" autocomplete="off"><br> 
+			<label for="sbtsel" i18n-text="login_sbtsel" title="Seclector">登录&nbsp;</label> <input type="text" name="sbtsel" id="sbtsel" autocomplete="off"><br> 
+			<input type="button" id="addSite" value="添加" i18n-value="site_add" style="margin-left: 163px;">
+		</div>
+	</div>
+</body>
+</html>

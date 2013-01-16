@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FM</title>
+<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+chrome.extension.onRequest.addListener(onRequest);
+
+function onRequest(request, sender, callback) {
+	if (request.action == 'play') {
+		console.log("play");
+	}
+};
+
+function sendRequest(op) {
+    chrome.extension.sendRequest({action : op});
+}
+
+$(function() {
+	var baseurl = "http://douban.fm/j/mine/playlist";
+    
+    var trace = function(type, data) {
+        if (window.console && window.console.log) {
+            switch (type) {
+                case 1:
+                    console.log("init");
+                    break;
+                case 2:
+                    console.log("load playlist:");
+                    console.log("[ Artist - Title - Album");
+                    $(data).each(function() {
+                        console.log(this.artist + " - " + this.title + " - " + this.albumtitle);
+                    });
+                    console.log("]");
+                    break;
+                case 3:
+                    console.log("now play: " + data.artist + " - " + data.title);
+                    break;
+                case 4:
+                    console.log(data.title + " finish");
+                    break;
+                default:
+                    console.log(type);
+            }
+        }
+    };
+    
+    $.ajaxSetup({contentType: "text/plain"});
+    
+    var Player = {
+        song : {}, //正在播放
+        channel : 0, //频道
+        pos : -1, //播放位置
+        playlist : [], //播放列表
+        lastplaylist : [], //上一个播放列表
+        audio : "", //播放器
+        init : function() {
+            var jaudio = $("#audio-player");
+            jaudio.bind("ended", this.next);
+            jaudio.bind("error", this.error);
+            jaudio.bind({
+                play : function() {
+                    Player.notify("play");
+                },
+                pause : function() {
+                    Player.notify("pause");
+                },
+                playing : function() {
+                    Player.notify("playing")
+                }
+            });
+            this.audio = jaudio[0];
+            
+            trace(1);
+            //this.loadplaylist();
+        },
+        play : function() {
+        	if (this.playlist.length == 0) {
+        		this.loadplaylist();
+        		return;
+        	}
+            this.pos = this.pos + 1;
+            this.song = this.playlist[this.pos];
+            this.audio.src = this.song.url;
+            
+            //this.aplayer[0].load();
+            this.audio.play();
+            
+            trace(3, this.song);
+        },
+        pause : function() {
+        	this.audio.pause();
+        },
+        resume : function() {
+        	if (this.song.sid) {
+        	    this.audio.play();
+        	} else {
+        	    this.loadplaylist();
+        	}
+        },
+        next : function() {
+            var _this = Player;
+            _this.end();
+            if (_this.pos == _this.playlist.length - 1) {
+                $.get(baseurl, {
+                    "type" : Type.p,
+                    "sid" : _this.song.sid,
+                    "channel" : _this.channel,
+                    "h" : _this.history(Type.p, _this.playlist, _this.lastplaylist),
+                    "r" : r()
+                }, function(data) {
+                    if (data.r == 0) {
+                        _this.lastplaylist = _this.playlist;
+                        _this.playlist = data.song;
+                        _this.pos = -1;
+                        _this.play();
+                        
+                        trace(2, _this.playlist);
+                    }
+                }, "json");
+            } else {
+                _this.play();
+            }
+        },
+        loadplaylist : function() {
+            var _this = this;
+            $.get(baseurl, {
+                "type" : Type.n,
+                "channel" : this.channel,
+                "h" : _this.history(Type.s, _this.playlist, _this.lastplaylist),
+                "r" : r()
+            }, function(data) {
+                if (data.r == 0) {
+                    _this.playlist = data.song;
+                    _this.play();
+                    
+                    trace(2, _this.playlist);
+                }
+            }, "json");
+        },
+        history : function(type, pl, lpl) {
+            var h = [];
+            if (pl && $.isArray(pl)) {
+                for (var i in pl) {
+                    h.push(pl[i].sid + ":" + type);
+                }
+            }
+            if (lpl && $.isArray(lpl)) {
+                for (var song in lpl) {
+                    h.push(lpl[i].sid + ":" + type);
+                }
+            }
+            return h.join("|");
+        },
+        end : function() {
+            $.get(baseurl, {
+                "type" : Type.e,
+                "sid" : this.song.sid,
+                "channel" : this.channel,
+                "r" : r()
+            });
+            this.notify("end");
+        },
+        isPlay : function() {
+        	return !(this.audio.ended || this.audio.paused) && this.audio.currentTime;
+        },
+        error : function() {
+            
+        },
+        notify : function(op) {
+            sendRequest(op);
+        },
+        volume : function(vol) {
+            if (vol) {
+                this.audio.volume = vol;
+            } else {
+                this.audio.volume = 1;
+            }
+            trace("set volume:" + vol + "/" + this.audio.volume);
+        }
+    };
+    
+    var Type = {
+        n : "n",
+        e : "e",
+        p : "p",
+        r : "r",
+        s : "s"
+    };
+    
+    var r = function() {
+        return new Date().getTime();
+    };
+    
+    window.Player = Player;
+    window.trace = trace;
+    Player.init();
+});
+
+</script>
+</head>
+<body>
+    <div style="display: none;" id="fm-player">
+        <audio id="audio-player" autoplay="autoplay"></audio>
+    </div>
+</body>
+</html>

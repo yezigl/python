@@ -1,0 +1,66 @@
+{
+	"name": "__MSG_name__",
+	"version": "1.12.1217",
+	"description": "__MSG_desc__",
+	"manifest_version": 2,
+   	"default_locale": "zh_CN",
+   	"background": {
+   	    "page": "background.html"
+   	},
+   	"options_page": "options.html",
+   	"content_scripts": [
+	    {
+   	        "matches": ["*://no.sohu.com/", "*://pvinsight.sohu.com/", "*://*/*login*", "*://*/*logon*"],
+   	        "js": ["js/jquery-1.8.2.min.js", "js/autologin.js"],
+   	        "all_frames": false,
+   	        "run_at": "document_end"
+	    },
+	    {// display last visit time
+	  	  "css": ["css/custom.css"],
+	  	  "js": [ "js/jquery-1.8.2.min.js", "js/time.js" ],
+	  	  "matches": [ "*://*/*"],
+	  	  "run_at": "document_end"
+	  	},
+		{// xiami
+	  	  "js": [ "js/jquery-1.8.2.min.js", "js/xiami.js" ],
+	  	  "matches": [ "http://www.xiami.com/", "http://xiami.com/" ],
+	  	  "run_at": "document_end"
+	  	},
+	  	{// qidian
+	  	  "js": [ "js/jquery-1.8.2.min.js", "js/qidian.js" ],
+	  	  "matches": [ "http://www.qidian.com/", "http://www.qidian.com/Default.aspx" ],
+	  	  "run_at": "document_end"
+	  	},
+        {// qidian
+	      "js": [ "js/jquery-1.8.2.min.js", "js/qidianme.js" ],
+	      "matches": [ "http://me.qidian.com/Index.aspx" ],
+	      "run_at": "document_end"
+	    },
+	    { // sina weibo
+	        "js": ["js/jquery-1.8.2.min.js", "js/weibo.js"],
+	        "matches": ["http://weibo.com/u/*"],
+	        "run_at": "document_end"
+	    },
+	    { // t.sohu.com
+	        "js": ["js/jquery-1.8.2.min.js", "js/tsohu.js"],
+	        "matches": ["http://*.sohu.com/*"],
+	        "run_at": "document_end"
+	    }
+	],
+	"page_action": {
+        "default_icon": "img/alarm.png",
+        "default_title": "__MSG_pagetitle__"
+    },
+	"permissions": [
+		"tabs",
+		"webRequest",
+		"*://*/",
+		"webRequestBlocking",
+		"storage"
+	],
+	"web_accessible_resources": [
+	    "tpl/al.html",
+	    "js/al.js"
+	],
+	"update_url": "http://10.11.157.143/frag/inc/crx/updates.xml"
+}
