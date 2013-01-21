@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{{ escape(handler.settings["title"]) }}</title>
+<link rel="stylesheet" href="{{ static_url('reunion.css') }}" type="text/css"/>
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" />
+<script type="text/javascript" src="{{ static_url('reunion.js') }}"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+<style type="text/css">
+body {
+    font-size: 13px;
+    background-color: #FFF;
+    width: 100%;
+    height: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    height: 26px;
+    line-height: 26px;
+}
+
+table {
+    width: 100%;
+    background-color: #FFF;
+    border-collapse:collapse;
+    border: 1px solid silver;
+}
+
+td {
+    background-color: #FFF;
+    text-align: center;
+    border-collapse:collapse;
+    border: 1px solid silver;
+}
+
+.label {
+    width: 100px;
+    text-align: right;
+    float: left;
+}
+</style>
+<script type="text/javascript">
+    $(function() {
+        var options = {
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            changeMonth: false,
+            dateFormat : "yy-mm-dd",
+            regional : "zh_CN"
+        };
+        $("#holiday_date").datepicker(options);
+        $("#home_date").datepicker(options);
+        $("#free_date_from").datepicker(options);
+        $("#free_date_to").datepicker(options);
+        $("#reunion_date").datepicker(options);
+        
+        $("#addnewcm").bind("click", newcm);
+        $("#addcm").bind("click", addcm);
+        $("#addliuyan").bind("click", liuyan);
+        $("#addly").bind("click", addly);
+        $("input[name='shouqi']").click(function() {
+        	var to = $(this).data("to");
+        	$("#" + to).hide();
+        });
+        
+    });
+    
+    function newcm(event) {
+        var jtarget = $(event.target);
+        var pos = jtarget.offset();
+        var div = $("#newcm");
+		div.css({
+			"left" : (pos.left) + "px",
+			"top" : (pos.top + 20) + "px"
+		}).show();
+    }
+    
+    function addcm() {
+    	if (!$("input[name='name']").val()) {
+    		alert("姓名不能为空");
+    		return;
+    	}
+        $.post("/reunion/2013", {
+            name: $("input[name='name']").val(),
+            phone: $("input[name='phone']").val(),
+            holiday_date: $("input[name='holiday_date']").val(),
+            home_date: $("input[name='home_date']").val(),
+            free_date: $("input[name='free_date_from']").val() + " - " + $("input[name='free_date_to']").val(),
+            reunion_date: $("input[name='reunion_date']").val(),
+            family: $("input[name='family']:checked").val(),
+            remark: $("input[name='remark']").val(),
+            type: "cm"
+        }, function(data) {
+            if (data == "ok") {
+            	$("#newcm").hide();
+            }
+        });
+    }
+    
+    function liuyan(event) {
+        var jtarget = $(event.target);
+        var pos = jtarget.offset();
+        var div = $("#liuyan");
+		div.css({
+			"left" : (pos.left) + "px",
+			"top" : (pos.top + 20) + "px"
+		}).show();
+    }
+    
+    function addly() {
+        $.post("/reunion/2013", {
+            liuyan: $("textarea[name='liuyan']").val(),
+            type: "ly"
+        }, function(data) {
+        	if (data == "ok") {
+        	    $("#liuyan").hide();
+        	}
+        });
+    }
+    
+</script>
+</head>
+<body>
+<div style="margin: 30px auto; width: 900px;">
+    <div id="statinfo" style="padding: 5px 0 5px 20px;">
+        <ul>
+            {% for ly in lys %}
+            <li>{{ ly["liuyan"] }}</li>
+            {% end %}
+        </ul>
+    </div>
+    <div style="margin: 10px 0;">
+        <a href="javascript:void(0);" id="addnewcm" data-from="newcm" title="点击添加">我的聚会时间</a>&nbsp;&nbsp;
+        <a href="javascript:void(0);" id="addliuyan" data-from="liuyan" title="点击添加">留言</a>
+    </div>
+    <div id="newcm" data-to="newcm" style="display: none; position: fixed; z-index: 99999; background-color: #FFF;">
+        <ul>
+            <li><label class="label" for="name">姓名:</label><input type="text" name="name" id="name"></li>
+            <li><label class="label" for="phone">电话:</label><input type="text" name="phone" id="phone"></li>
+            <li><label class="label" for="holiday_date">放假时间:</label><input type="text" name="holiday_date" id="holiday_date"></li>
+            <li><label class="label" for="home_date">回家时间:</label><input type="text" name="home_date" id="home_date"></li>
+            <li><label class="label" for="">空闲时间:</label><input type="text" name="free_date_from" id="free_date_from">-<input type="text" name="free_date_to" id="free_date_to"></li>
+            <li><label class="label" for="reunion_date">期望聚会时间:</label><input type="text" name="reunion_date" id="reunion_date"></li>
+            <li><label class="label">是否带家属:</label>&nbsp;是<input type="radio" name="family" value="是">&nbsp;否<input type="radio" name="family" value="否"></li>
+            <li><label class="label" for="remark">备注:</label><input type="text" name="remark" id="remark"></li>
+            <li><label class="label">&nbsp;</label><input type="button" name="addcm" id="addcm" value="保存">&nbsp;<input type="button" name="shouqi" data-to="newcm" value="收起"></li>
+        </ul>
+    </div>
+    <div id="liuyan" data-to="liuyan" style="display: none; position: fixed; z-index: 99999; background-color: #FFF;">
+        <textarea name="liuyan" cols="18" rows="5"></textarea><br>
+        <input type="button" id="addly" value="保存">&nbsp;<input type="button" name="shouqi" data-to="liuyan" value="收起">
+    </div>
+    <div id="cmlist" style="margin: 10px 0;">
+        <table>
+            <tr>
+                <td width="10%">姓名</td>
+                <td width="10%">电话</td>
+                <td width="10%">放假时间</td>
+                <td width="10%">回家时间</td>
+                <td width="18%">空闲时间</td>
+                <td width="12%">期望聚会时间</td>
+                <td width="10%">是否带家属</td>
+                <td width="20%">备注</td>
+            </tr>
+            {% for cm in cms %}
+            <tr>
+                <td>{{ cm["name"] }}</td>
+                <td>{{ cm["phone"] }}</td>
+                <td>{{ cm["holiday_date"] }}</td>
+                <td>{{ cm["home_date"] }}</td>
+                <td>{{ cm["free_date"] }}</td>
+                <td>{{ cm["reunion_date"] }}</td>
+                <td>{{ cm["family"] }}</td>
+                <td>{{ cm["remark"] }}</td>
+            </tr>
+            {% end %}
+        </table>
+
+    </div>
+</div>
+</body>
+</html>
