@@ -14,6 +14,8 @@ body {
     background-color: #FFF;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 ul {
@@ -53,7 +55,7 @@ td {
             showOtherMonths: true,
             selectOtherMonths: true,
             changeMonth: false,
-            dateFormat : "yy-mm-dd",
+            dateFormat : "yy/mm/dd",
             regional : "zh_CN"
         };
         $("#holiday_date").datepicker(options);
@@ -100,7 +102,8 @@ td {
             type: "cm"
         }, function(data) {
             if (data == "ok") {
-            	$("#newcm").hide();
+            	//$("#newcm").hide();
+            	location.reload();
             }
         });
     }
@@ -121,7 +124,8 @@ td {
             type: "ly"
         }, function(data) {
         	if (data == "ok") {
-        	    $("#liuyan").hide();
+        	    //$("#liuyan").hide();
+        		location.reload();
         	}
         });
     }
@@ -130,7 +134,35 @@ td {
 </head>
 <body>
 <div style="margin: 30px auto; width: 900px;">
-    <div id="statinfo" style="padding: 5px 0 5px 20px;">
+    <div id="caleinfo" style="margin: 10px 0;">
+        <table>
+            <tr>
+                <td>1.19</td>
+                <td>2.1</td>
+                <td>2.2</td>
+                <td>2.3</td>
+                <td>2.4</td>
+                <td>2.5</td>
+                <td>2.6</td>
+                <td>2.7</td>
+                <td>2.8</td>
+                <td>2.9</td>
+            <tr>
+            <tr>
+                <td>腊八</td>
+                <td>二十一</td>
+                <td>二十二</td>
+                <td>二十三</td>
+                <td>二十四</td>
+                <td>二十五</td>
+                <td>二十六</td>
+                <td>二十七</td>
+                <td>二十八</td>
+                <td>二十九</td>
+            <tr>
+        </table>
+    </div>
+    <div id="statinfo" style="padding: 5px 0 5px 20px; border: 1px soild silver;">
         <ul>
             {% for ly in lys %}
             <li>{{ ly["liuyan"] }}</li>
@@ -161,12 +193,12 @@ td {
     <div id="cmlist" style="margin: 10px 0;">
         <table>
             <tr>
-                <td width="10%">姓名</td>
-                <td width="10%">电话</td>
+                <td width="8%">姓名</td>
+                <td width="12%">电话</td>
                 <td width="10%">放假时间</td>
                 <td width="10%">回家时间</td>
-                <td width="18%">空闲时间</td>
-                <td width="12%">期望聚会时间</td>
+                <td width="20%">空闲时间</td>
+                <td width="10%">期望聚会时间</td>
                 <td width="10%">是否带家属</td>
                 <td width="20%">备注</td>
             </tr>
